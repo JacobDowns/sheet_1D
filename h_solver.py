@@ -1,5 +1,4 @@
 from dolfin import *
-from constants import *
 from scipy.integrate import ode
 
 """Solves for the sheet height h."""
@@ -8,7 +7,7 @@ class HSolver():
 
   def __init__(self, model):
     
-    ### Get a few fields from the model    
+    ### Get a few fields and parameters from the model
     
     # Basal sliding speed
     u_b = model.u_b
@@ -18,6 +17,12 @@ class HSolver():
     N = model.N   
     # Initial model time
     t0 = model.t
+    # Rate factor
+    A = model.constants['A']
+    # Distance between bumps
+    l_r = model.constants['l_r']
+    # Bump height
+    h_r = model.constants['h_r']
     
 
     ### Set up the gap height ODE

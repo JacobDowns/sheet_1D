@@ -1,5 +1,4 @@
 from dolfin import *
-from constants import *
 
 """ The potential solver solves for the potential phi. """
 
@@ -7,7 +6,7 @@ class PhiSolver():
 
   def __init__(self, model):
     
-    ### Get a few fields from the model    
+    ### Get a few fields and parameters from the model
     
     # Get melt rate
     m = model.m
@@ -19,6 +18,17 @@ class PhiSolver():
     phi = model.phi
     # Potential at overburden pressure
     phi_0 = model.phi_0
+    # Rate factor
+    A = model.constants['A']
+    # Sheet conductivity
+    k = model.constants['k']
+    # Bump height
+    h_r = model.constants['h_r']
+    # Distance between bumps
+    l_r = model.constants['l_r']
+    # Exponents
+    alpha = model.constants['alpha']
+    delta = model.constants['delta']
        
     
     ### Set up the model

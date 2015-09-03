@@ -42,6 +42,13 @@ class SheetModel():
     # Newton solver parameters
     self.newton_params = self.model_inputs['newton_params']
     
+    # If there is a dictionary of physical constants specified, use it. 
+    # Otherwise use the defaults. 
+    if 'constants' in self.model_inputs :
+      self.constants = self.model_inputs['constants']
+    else :
+      self.constants = physical_constants
+    
 
     ### Create some fields
 
